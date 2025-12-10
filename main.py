@@ -42,7 +42,7 @@ def print_results_summary(results: dict):
         print(results["validation"]["validation_report"][:300] + "..." if len(results["validation"]["validation_report"]) > 300 else results["validation"]["validation_report"])
     
     if "report" in results:
-        print(f"\n✍️ Full Report Generated: {results['report']['word_count']} words")
+        print(f"\n Full Report Generated: {results['report']['word_count']} words")
         print("-" * 70)
     
     print("\n" + "="*70)
@@ -155,11 +155,11 @@ def example_deep_research():
 def example_comparative_research():
     """Example: Compare multiple topics."""
     print_banner()
-    print(" Example 3: Comparative Research\n")
+    print("Example 3: Comparative Research\n")
     
     # Initialize memory manager and orchestrator
     memory_manager = ResearchMemoryManager()
-    session_id = memory_manager.start_research_session("comparative_research_demo")
+    memory_manager.start_research_session("comparative_research_demo")
     
     orchestrator = OrchestratorAgent()
     
@@ -215,7 +215,7 @@ def example_memory_retrieval():
     for i, entry in enumerate(history, 1):
         print(f"{i}. {entry['topic']} - {entry['timestamp']}")
         if entry.get('has_report'):
-            print("   ✍️ Full report available")
+            print("    Full report available")
     
     print("\n" + "-" * 70)
     
@@ -231,13 +231,13 @@ def example_memory_retrieval():
 def interactive_mode():
     """Interactive research mode."""
     print_banner()
-    print(" Interactive Research Mode")
+    print("Interactive Research Mode")
     print("Enter a research topic or 'quit' to exit\n")
     
     memory_manager = ResearchMemoryManager()
     orchestrator = OrchestratorAgent()
     
-    session_id = memory_manager.start_research_session("interactive_session")
+    memory_manager.start_research_session("interactive_session")
     
     while True:
         topic = input("\n Research Topic: ").strip()
@@ -320,7 +320,7 @@ def main():
 if __name__ == "__main__":
     # Check for API key
     if not os.getenv("GOOGLE_API_KEY"):
-        print("⚠️  Warning: GOOGLE_API_KEY environment variable not set!")
+        print("  Warning: GOOGLE_API_KEY environment variable not set!")
         print("Please set your API key:")
         print("  export GOOGLE_API_KEY='your-api-key-here'  # Linux/Mac")
         print("  $env:GOOGLE_API_KEY='your-api-key-here'   # Windows PowerShell")

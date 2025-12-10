@@ -16,7 +16,7 @@ def main():
     
     # Check API key
     if not os.getenv("GOOGLE_API_KEY"):
-        print("\n⚠️  ERROR: GOOGLE_API_KEY environment variable not set!")
+        print("\n  ERROR: GOOGLE_API_KEY environment variable not set!")
         print("\nPlease set your API key:")
         print("  Windows PowerShell:")
         print("    $env:GOOGLE_API_KEY='your-api-key-here'")
