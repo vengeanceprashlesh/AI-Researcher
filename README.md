@@ -52,33 +52,6 @@ Academic research is a time-intensive and complex process that involves:
 
 The **AI Research Collaborator** is a multi-agent system that automates and accelerates the research workflow by combining specialized AI agents into a unified research pipeline.
 
----
-
-## Problem Statement
-
-Academic research is a time-intensive and complex process that involves:
-
-| Challenge | Description |
-|-----------|-------------|
-| Information Overload | Researchers sift through thousands of papers and articles |
-| Verification Challenges | Ensuring accuracy and credibility of sources is difficult |
-| Time Constraints | Students and educators have limited time for thorough research |
-| Synthesis Difficulty | Combining information from multiple sources requires expertise |
-| Documentation Overhead | Writing comprehensive reports takes significant effort |
-
-### Current Impact
-
-- **Time Investment**: 15-20 hours for comprehensive research
-- **Scope Limitation**: Only 5-10 sources manually reviewed
-- **Quality Variance**: Inconsistent fact-checking and verification
-- **Resource Constraint**: Particularly challenging for under-resourced institutions
-
----
-
-## Solution
-
-The **AI Research Collaborator** is a multi-agent system that automates and accelerates the research workflow by combining specialized AI agents into a unified research pipeline.
-
 ### What It Does
 
 | Feature | Description |
@@ -285,10 +258,233 @@ Security & observability:
 
 ### Core Capabilities
 
-- Multi-Agent System
-    - 5 specialized agents working in coordination
-    - Sequential workflow with orchestration
-    - State management across agents
+- Multi-Agent System - 5 specialized agents working in coordination
+- Sequential Workflow - Orchestration and state management across agents
+- Memory Persistence - Long-term research history with JSON storage
+- Session Management - Short-term session state and pause/resume capability
+- Flexible Depth - Quick (3 sources), Medium (5 sources), Deep (10 sources) research modes
+- Fact-Checking - Automatic validation of claims with confidence ratings
+- Report Generation - Academic-style reports with proper citations
+- Memory Bank - Cross-session retrieval of previous research
+
+---
+
+## Installation
+
+### Prerequisites
+
+- Python 3.9 or higher
+- Google API Key for Gemini (get it at [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey))
+- Internet connection
+
+### Setup Steps
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/vengeanceprashlesh/AI-Researcher.git
+   cd AI-Researcher
+   ```
+
+2. Set your Google API Key:
+   ```bash
+   # Option A: Set environment variable (Windows PowerShell)
+   $env:GOOGLE_API_KEY="your-api-key-here"
+   
+   # Option B: Create .env file (recommended)
+   cp .env.template .env
+   # Edit .env and add your API key
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## Quick Start
+
+### Run Quick Demo
+```bash
+python demo.py
+```
+
+### Run Interactive Mode
+```bash
+python main.py
+# Select option 6 for interactive mode
+```
+
+### Run Specific Example
+```bash
+python main.py
+# Choose from:
+# 1. Quick Research (3 sources, ~5 min)
+# 2. Deep Research (10 sources, validation, report, ~20 min)
+# 3. Comparative Research (compare 2+ topics)
+# 4. Custom Workflow (build your own)
+# 5. Memory Retrieval (view past research)
+# 6. Interactive Mode (full conversation)
+```
+
+---
+
+## Usage Examples
+
+### In Python Code
+```python
+from agents import OrchestratorAgent
+from memory_manager import ResearchMemoryManager
+
+# Initialize
+orchestrator = OrchestratorAgent()
+memory = ResearchMemoryManager()
+
+# Quick research
+results = orchestrator.quick_research("Impact of AI on Education")
+print(results)
+
+# Deep research with all features
+results = orchestrator.deep_research("Machine Learning in Healthcare")
+
+# Save research
+memory.start_research_session()
+memory.save_research_to_session("My Topic", results)
+memory.end_research_session()
+```
+
+### Web Interface (Optional)
+```bash
+python web_app.py
+# Opens Gradio UI at http://localhost:7860
+```
+
+---
+
+## Project Structure
+
+```
+kaggle-agent-project/
+├── agents/                 # All agent implementations
+│   ├── orchestrator_agent.py    # Main coordinator
+│   ├── search_agent.py          # Literature search
+│   ├── summarization_agent.py   # Content synthesis
+│   ├── fact_checker_agent.py    # Verification
+│   ├── writer_agent.py          # Report generation
+│   └── __init__.py              # Module exports
+├── config/
+│   └── agent_config.py          # Configuration settings
+├── main.py                 # Main application
+├── demo.py                 # Quick demo
+├── web_app.py              # Web UI (Gradio, optional)
+├── memory_manager.py       # Memory system
+├── requirements.txt        # Python dependencies
+├── .env.template           # Environment variables template
+├── README.md               # This file
+├── ARCHITECTURE.md         # Detailed architecture docs
+├── SETUP.md                # Setup guide
+└── outputs/                # Generated reports (created at runtime)
+```
+
+---
+
+## Kaggle Capstone Requirements
+
+This project fulfills the Agents for Good (Education) capstone track requirements:
+
+- Multi-Agent Architecture: 5 specialized agents coordinated by orchestrator
+- Tool Use: Google Search API for literature search and fact verification
+- Memory/Context: JSON-based memory bank and session service
+- User Experience: CLI (main.py), Demo (demo.py), Web UI (web_app.py)
+- Educational Value: Automates research workflow for students and educators
+- Scalability: Designed for future cloud deployment and parallel processing
+
+---
+
+## Technical Details
+
+### Technology Stack
+- **Language**: Python 3.9+
+- **LLM**: Google Gemini 2.0 Flash
+- **API**: Google GenAI SDK
+- **Storage**: JSON file-based
+- **Web UI**: Gradio (optional)
+
+### Design Patterns
+- Multi-Agent Pattern: Specialized agents with clear responsibilities
+- Orchestrator Pattern: Central coordinator managing workflow
+- Repository Pattern: Memory Bank abstracts data persistence
+- Chain-of-Responsibility: Sequential workflow between agents
+
+### Temperatures Used
+- Search Agent: 0.4 (balanced creativity and accuracy)
+- Summarization Agent: 0.3 (factual, low variation)
+- Fact-Checker Agent: 0.2 (highest precision)
+- Writer Agent: 0.5 (creative but accurate)
+
+---
+
+## Testing
+
+### Test Quick Research
+```bash
+python demo.py
+```
+Expected: Completes in ~2-5 minutes, shows summary
+
+### Test Deep Research
+```bash
+python main.py
+# Select option 2
+```
+Expected: Generates full report with validation
+
+### Test Memory
+```bash
+python main.py
+# Select option 5
+```
+Expected: Shows previous research sessions
+
+### Test Interactive Mode
+```bash
+python main.py
+# Select option 6
+```
+Expected: Interactive CLI prompt for research topics
+
+---
+
+## Future Enhancements
+
+- **Parallel Agent Execution**: Run agents concurrently for faster research
+- **Database Backend**: Replace JSON with PostgreSQL for scalability
+- **Advanced Memory**: Semantic search and vector embeddings for memory retrieval
+- **Multi-LLM Support**: Use different models for different agents
+- **Export Formats**: PDF, Word, Markdown report generation
+- **API Server**: REST API wrapper for web/mobile integration
+- **Caching Layer**: Cache research results for identical topics
+- **Authentication**: User accounts and private research histories
+- **Rate Limiting**: Built-in throttling for API calls
+- **Monitoring**: Dashboards for research metrics and agent performance
+
+---
+
+## Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/my-feature`)
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+---
+
+## License
+
+This project is licensed under the MIT License - see LICENSE file for details.
 
 ---
 
