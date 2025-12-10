@@ -15,7 +15,7 @@ from memory_manager import ResearchMemoryManager
 def print_banner():
     """Print application banner."""
     print("\n" + "="*70)
-    print("  🎓 AI RESEARCH COLLABORATOR")
+    print("  AI RESEARCH COLLABORATOR")
     print("  Multi-Agent Research Assistant for Education")
     print("="*70 + "\n")
 
@@ -28,11 +28,11 @@ def print_results_summary(results: dict):
         results: Research results dictionary
     """
     print("\n" + "="*70)
-    print("📊 RESEARCH RESULTS SUMMARY")
+    print(" RESEARCH RESULTS SUMMARY")
     print("="*70)
     
     if "summary" in results:
-        print("\n📝 Summary:")
+        print("\n Summary:")
         print("-" * 70)
         print(results["summary"]["summary"][:500] + "..." if len(results["summary"]["summary"]) > 500 else results["summary"]["summary"])
     
@@ -72,7 +72,7 @@ def save_report_to_file(results: dict, topic: str, output_dir: str = "outputs"):
             f.write(f"Topic: {topic}\n")
             f.write("="*70 + "\n\n")
             f.write(results["report"]["report"])
-        print(f"\n💾 Report saved to: {filename}")
+        print(f"\n Report saved to: {filename}")
     
     # Save JSON results
     json_filename = os.path.join(output_dir, f"{safe_topic}_results.json")
@@ -85,13 +85,13 @@ def save_report_to_file(results: dict, topic: str, output_dir: str = "outputs"):
             "word_count": results.get("report", {}).get("word_count", 0)
         }
         json.dump(json_results, f, indent=2, ensure_ascii=False)
-    print(f"💾 Results saved to: {json_filename}")
+    print(f" Results saved to: {json_filename}")
 
 
 def example_quick_research():
     """Example: Quick research on a topic."""
     print_banner()
-    print("🔬 Example 1: Quick Research\n")
+    print(" Example 1: Quick Research\n")
     
     # Initialize memory manager and orchestrator
     memory_manager = ResearchMemoryManager()
@@ -105,7 +105,7 @@ def example_quick_research():
     
     summary = orchestrator.quick_research(topic)
     
-    print("\n📝 Quick Summary:")
+    print("\n Quick Summary:")
     print("-" * 70)
     print(summary)
     print("-" * 70)
@@ -121,7 +121,7 @@ def example_quick_research():
 def example_deep_research():
     """Example: Deep research with validation and report generation."""
     print_banner()
-    print("🔬 Example 2: Deep Research with Validation\n")
+    print(" Example 2: Deep Research with Validation\n")
     
     # Initialize memory manager and orchestrator
     memory_manager = ResearchMemoryManager()
@@ -144,7 +144,7 @@ def example_deep_research():
     
     # Show memory context
     context = memory_manager.get_research_context()
-    print(f"\n📊 Memory Statistics:")
+    print(f"\n Memory Statistics:")
     print(f"   Total sessions: {context['statistics']['total_research_sessions']}")
     print(f"   Unique topics: {context['statistics']['unique_topics']}")
     
@@ -155,7 +155,7 @@ def example_deep_research():
 def example_comparative_research():
     """Example: Compare multiple topics."""
     print_banner()
-    print("🔬 Example 3: Comparative Research\n")
+    print(" Example 3: Comparative Research\n")
     
     # Initialize memory manager and orchestrator
     memory_manager = ResearchMemoryManager()
@@ -171,7 +171,7 @@ def example_comparative_research():
     
     results = orchestrator.research_and_compare(topics)
     
-    print("\n🔄 Comparison Synthesis:")
+    print("\n Comparison Synthesis:")
     print("-" * 70)
     print(results["comparison"]["synthesis"])
     print("-" * 70)
@@ -186,7 +186,7 @@ def example_comparative_research():
 def example_custom_workflow():
     """Example: Custom research workflow."""
     print_banner()
-    print("🔬 Example 4: Custom Workflow\n")
+    print(" Example 4: Custom Workflow\n")
     
     orchestrator = OrchestratorAgent()
     
@@ -196,21 +196,21 @@ def example_custom_workflow():
     
     results = orchestrator.custom_workflow(topic, workflow)
     
-    print("\n✅ Custom Workflow Complete!")
+    print("\n Custom Workflow Complete!")
     print(f"Executed steps: {', '.join(workflow)}")
 
 
 def example_memory_retrieval():
     """Example: Retrieve previous research from memory."""
     print_banner()
-    print("🔬 Example 5: Memory Retrieval\n")
+    print(" Example 5: Memory Retrieval\n")
     
     memory_manager = ResearchMemoryManager()
     
     # Get research history
     history = memory_manager.memory_bank.get_history(limit=5)
     
-    print("📚 Recent Research History:")
+    print(" Recent Research History:")
     print("-" * 70)
     for i, entry in enumerate(history, 1):
         print(f"{i}. {entry['topic']} - {entry['timestamp']}")
@@ -221,7 +221,7 @@ def example_memory_retrieval():
     
     # Get statistics
     stats = memory_manager.memory_bank.get_statistics()
-    print(f"\n📊 Memory Bank Statistics:")
+    print(f"\n Memory Bank Statistics:")
     print(f"   Total research sessions: {stats['total_research_sessions']}")
     print(f"   Unique topics: {stats['unique_topics']}")
     if stats['most_researched']:
@@ -231,7 +231,7 @@ def example_memory_retrieval():
 def interactive_mode():
     """Interactive research mode."""
     print_banner()
-    print("🎯 Interactive Research Mode")
+    print(" Interactive Research Mode")
     print("Enter a research topic or 'quit' to exit\n")
     
     memory_manager = ResearchMemoryManager()
@@ -240,7 +240,7 @@ def interactive_mode():
     session_id = memory_manager.start_research_session("interactive_session")
     
     while True:
-        topic = input("\n🔬 Research Topic: ").strip()
+        topic = input("\n Research Topic: ").strip()
         
         if topic.lower() in ['quit', 'exit', 'q']:
             break
@@ -251,7 +251,7 @@ def interactive_mode():
         # Check if topic was researched before
         previous = memory_manager.retrieve_previous_research(topic)
         if previous:
-            print(f"\n💡 Found previous research on this topic!")
+            print(f"\n Found previous research on this topic!")
             use_previous = input("Use previous results? (y/n): ").strip().lower()
             if use_previous == 'y':
                 print_results_summary(previous)
@@ -272,12 +272,12 @@ def interactive_mode():
         
         # Ask if user wants to save report
         if "report" in results:
-            save = input("\n💾 Save report to file? (y/n): ").strip().lower()
+            save = input("\n Save report to file? (y/n): ").strip().lower()
             if save == 'y':
                 save_report_to_file(results, topic)
     
     memory_manager.end_research_session()
-    print("\n👋 Thank you for using AI Research Collaborator!")
+    print("\n Thank you for using AI Research Collaborator!")
 
 
 def main():
