@@ -11,7 +11,7 @@ from memory_manager import ResearchMemoryManager
 def main():
     """Run a simple demo."""
     print("\n" + "="*70)
-    print("🎓 AI RESEARCH COLLABORATOR - DEMO")
+    print(" AI RESEARCH COLLABORATOR - DEMO")
     print("="*70)
     
     # Check API key
@@ -24,8 +24,8 @@ def main():
         print("    export GOOGLE_API_KEY='your-api-key-here'")
         return
     
-    print("\n✅ API Key found!")
-    print("\n🔬 Running Quick Research Demo...\n")
+    print("\n API Key found!")
+    print("\n Running Quick Research Demo...\n")
     
     try:
         # Initialize
@@ -50,7 +50,7 @@ def main():
         # Display summary
         if "summary" in results:
             summary = results["summary"]["summary"]
-            print("\n📝 Research Summary:")
+            print("\n Research Summary:")
             print("-" * 70)
             print(summary[:500] + "..." if len(summary) > 500 else summary)
             print("-" * 70)
@@ -60,7 +60,7 @@ def main():
         
         # Show stats
         stats = memory_manager.memory_bank.get_statistics()
-        print(f"\n📊 Memory Stats:")
+        print(f"\n Memory Stats:")
         print(f"   Total sessions: {stats['total_research_sessions']}")
         print(f"   Unique topics: {stats['unique_topics']}")
         
@@ -68,7 +68,7 @@ def main():
         memory_manager.end_research_session()
         
         print("\n" + "="*70)
-        print("✅ DEMO COMPLETE!")
+        print(" DEMO COMPLETE!")
         print("="*70)
         print("\nNext steps:")
         print("  1. Run 'python main.py' for more examples")

@@ -107,7 +107,7 @@ def build_interface() -> gr.Blocks:
 
     with gr.Blocks(title="AI Research Collaborator", theme=theme) as demo:
         gr.Markdown(
-            """# 🎓 AI Research Collaborator
+            """#  AI Research Collaborator
 Multi-agent research assistant for education.
 
 **How to use it**
@@ -120,7 +120,7 @@ Multi-agent research assistant for education.
         with gr.Row():
             # Left column: controls
             with gr.Column(scale=1, min_width=320):
-                gr.Markdown("### 🔍 Research setup")
+                gr.Markdown("###  Research setup")
                 topic = gr.Textbox(
                     label="Research topic",
                     placeholder="e.g., Impact of AI on personalized learning",
@@ -138,14 +138,14 @@ Multi-agent research assistant for education.
                     label="Generate full report",
                     info="Turn off for faster, summary-only runs.",
                 )
-                run_button = gr.Button("🚀 Run Research", variant="primary")
+                run_button = gr.Button(" Run Research", variant="primary")
                 gr.Markdown(
                     "Tip: use **deep** for final results and **quick** while exploring topics."
                 )
 
             # Right column: results
             with gr.Column(scale=2):
-                gr.Markdown("### 📊 Results")
+                gr.Markdown("###  Results")
                 with gr.Tab("Summary"):
                     summary_out = gr.Textbox(
                         label="High-level summary",

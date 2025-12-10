@@ -91,11 +91,11 @@ def save_report_to_file(results: dict, topic: str, output_dir: str = "outputs"):
 def example_quick_research():
     """Example: Quick research on a topic."""
     print_banner()
-    print(" Example 1: Quick Research\n")
+    print("Example 1: Quick Research\n")
     
     # Initialize memory manager and orchestrator
     memory_manager = ResearchMemoryManager()
-    session_id = memory_manager.start_research_session("quick_research_demo")
+    memory_manager.start_research_session("quick_research_demo")
     
     orchestrator = OrchestratorAgent()
     
@@ -121,11 +121,11 @@ def example_quick_research():
 def example_deep_research():
     """Example: Deep research with validation and report generation."""
     print_banner()
-    print(" Example 2: Deep Research with Validation\n")
+    print("Example 2: Deep Research with Validation\n")
     
     # Initialize memory manager and orchestrator
     memory_manager = ResearchMemoryManager()
-    session_id = memory_manager.start_research_session("deep_research_demo")
+    memory_manager.start_research_session("deep_research_demo")
     
     orchestrator = OrchestratorAgent()
     

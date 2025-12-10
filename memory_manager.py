@@ -72,7 +72,7 @@ class MemoryBank:
         }
         
         self._save_memory()
-        print(f"💾 Stored research on '{topic}' in memory bank")
+        print(f" Stored research on '{topic}' in memory bank")
     
     def retrieve_research(self, topic: str) -> Optional[Dict[str, Any]]:
         """
@@ -135,7 +135,7 @@ class MemoryBank:
         """Clear all memory."""
         self.memory = {"research_history": [], "topics": {}}
         self._save_memory()
-        print("🗑️ Memory bank cleared")
+        print("️ Memory bank cleared")
 
 
 class InMemorySessionService:
@@ -171,7 +171,7 @@ class InMemorySessionService:
         }
         
         self.current_session_id = session_id
-        print(f"📝 Created session: {session_id}")
+        print(f" Created session: {session_id}")
         return session_id
     
     def get_session(self, session_id: str = None) -> Optional[Dict[str, Any]]:
@@ -238,7 +238,7 @@ class InMemorySessionService:
         
         if session_id and session_id in self.sessions:
             self.sessions[session_id]["ended_at"] = datetime.now().isoformat()
-            print(f"✅ Ended session: {session_id}")
+            print(f" Ended session: {session_id}")
             
             if session_id == self.current_session_id:
                 self.current_session_id = None
